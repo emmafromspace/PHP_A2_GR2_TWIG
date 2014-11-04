@@ -24,6 +24,6 @@ while($j<$i){
 echo $twig ->render('admin-article-list.html.twig',[
     'articles' => $articles,
     'connected' => isConnected(),
-    'username' => 'frapix',
+    'username' => 'emmafromspace',
 ]);
 require __DIR__.'/_footer.php';
