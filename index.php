@@ -1,9 +1,10 @@
 <?php
 /**
- * @author Thibaud BARDIN (https://github.com/Irvyne).
+ * @author Benjamin GUILLEMANT (https://github.com/BenjaminGuillemant).
  * This code is under MIT licence (see https://github.com/Irvyne/license/blob/master/MIT.md)
  */
 
+// Je charge toutes les librairies
 require __DIR__.'/_header.php';
 
 $perPage = 6; // nbArticleParPage
@@ -19,10 +20,14 @@ if ($currentPage > $nbPages) {
     header('Location: index.php?p='.$nbPages);
 }
 
-$articles = getArticles($link, null, ($currentPage-1)*$perPage, $perPage);
+$articles = getEnabledArticles($link, true, null, ($currentPage-1)*$perPage, $perPage);
 
-echo $twig->render('article.html.twig', [
+echo $twig ->render('articles.html.twig',[
     'articles' => $articles,
+    'perpage' => $perPage,
+    'currentPage' => $currentPage,
+    'nbPages' => $nbPages,
+    'connected' => isConnected(),
+    'username' => 'frapix',
 ]);
-
 require __DIR__.'/_footer.php';

@@ -1,15 +1,16 @@
 {
-    "name": "irvyne/php_a2_gr2_twig",
+    "name": "xusifob/php_a2_gr2_twig",
     "description": "Rendu A2 GR2 Sem2",
     "require": {
-        "twig/twig": "~1.16",
-        "imagine/imagine": "~0.6"
+        "twig/twig": "1.16.*",
+        "imagine/imagine": "~0.6",
+        "twitter/bootstrap": "~3.2"
     },
     "license": "MIT",
     "authors": [
         {
-            "name": "Thibaud BARDIN",
-            "email": "thibaud.bardin@gmail.com"
+            "name": "Bastien MALAHIEUDE",
+            "email": "bastien@bastienmalahieude.fr"
         }
     ],
     "minimum-stability": "stable"

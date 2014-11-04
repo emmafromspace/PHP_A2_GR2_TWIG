@@ -1,9 +1,10 @@
 <?php
 /**
- * @author Thibaud BARDIN (https://github.com/Irvyne).
+ * @author Benjamin GUILLEMANT (https://github.com/BenjaminGuillemant).
  * This code is under MIT licence (see https://github.com/Irvyne/license/blob/master/MIT.md)
  */
 
+// Je charge toutes les librairies
 require __DIR__.'/_header.php';
 
 if (!empty($_GET['id'])) {
@@ -16,6 +17,9 @@ if (!empty($_GET['id'])) {
     header('Location: index.php');
 }
 
+echo $twig ->render('article.html.twig',[
+    'article' => $article,
+    'connected' => true,
+    'username' => 'frapix',
+]);
 require __DIR__.'/_footer.php';
-
-include __DIR__.'/template/article.php';

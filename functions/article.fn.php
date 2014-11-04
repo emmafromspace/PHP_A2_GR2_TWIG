@@ -1,7 +1,7 @@
 <?php
 /**
- * @author Thibaud BARDIN (https://github.com/Irvyne).
- * This code is under MIT licence (see https://github.com/Irvyne/license/blob/master/MIT.md)
+ * @author Benjamin GUILLEMANT (https://github.com/BenjaminGuillemant).
+ * This code is under MIT licence (see https://github.com/BenjaminGuillemant/license/blob/master/MIT.md)
  */
 
 /**
@@ -13,9 +13,42 @@
  *
  * @return array
  */
+function getEnabledArticles($link, $enabled = true, $userId = null, $from = null, $number = null)
+{
+    $sql = 'SELECT * FROM article';
+
+    if (null !== $userId) {
+        $sql .= ' WHERE user_id = '.(int)$userId;
+    }
+    if ($enabled) {
+        $sql .= ' WHERE enabled=1';
+    }
+
+    if (null !== $from && null !== $number) {
+        $sql .= ' LIMIT '.(int)$from.', '.(int)$number;
+    } elseif (null !== $from) {
+        $sql .= ' LIMIT '.(int)$from.', 0';
+    } elseif (null !== $number) {
+        $sql .= ' LIMIT '.(int)$number;
+    }
+
+
+    // LIMIT 5
+    // LIMIT 12, 6
+    // LIMIT 5, 0
+
+    $result = mysqli_query($link, $sql);
+
+    $articles = [];
+    while ($article = mysqli_fetch_assoc($result)) {
+        $articles[] = $article;
+    }
+
+    return $articles;
+}
+
 function getArticles($link, $userId = null, $from = null, $number = null)
 {
-    //TODO https://github.com/Irvyne/A2_PHP_MYSQL_GR2
     $sql = 'SELECT * FROM article';
 
     if (null !== $userId) {
@@ -29,6 +62,7 @@ function getArticles($link, $userId = null, $from = null, $number = null)
     } elseif (null !== $number) {
         $sql .= ' LIMIT '.(int)$number;
     }
+
 
     // LIMIT 5
     // LIMIT 12, 6
