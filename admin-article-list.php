@@ -1,6 +1,6 @@
 <?php
 /**
- * @author Benjamin GUILLEMANT (https://github.com/BenjaminGuillemant).
+ * @author Emma Billiet (https://github.com/Bemmafromspace).
  * This code is under MIT licence (see https://github.com/Irvyne/license/blob/master/MIT.md)
  */
 
